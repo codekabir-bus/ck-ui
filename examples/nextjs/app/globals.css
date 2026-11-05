@@ -1,0 +1,420 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* ck-ui:start - CK-UI design system, managed by ck-ui-cli (`npx ck-ui-cli init` rewrites this block) */
+/* CK-UI's dark mode: `ck-dark:` applies under a `.dark` ancestor unless a `.light` boundary (ThemeScope) sits in between. */
+@custom-variant ck-dark (&:is(.dark *):not(:where(.dark .light *)));
+
+/* Colours read RGB-channel tokens, so opacity modifiers work (bg-primary/10). */
+@theme inline {
+    --color-background: rgb(var(--ck-background));
+    --color-foreground: rgb(var(--ck-foreground));
+    --color-surface: rgb(var(--ck-surface));
+    --color-surface-foreground: rgb(var(--ck-surface-foreground));
+    --color-muted: rgb(var(--ck-muted));
+    --color-muted-foreground: rgb(var(--ck-muted-foreground));
+    --color-accent: rgb(var(--ck-accent));
+    --color-accent-foreground: rgb(var(--ck-accent-foreground));
+    --color-border: rgb(var(--ck-border));
+    --color-input: rgb(var(--ck-input));
+    --color-ring: rgb(var(--ck-ring));
+    --color-primary: rgb(var(--ck-primary));
+    --color-primary-hover: rgb(var(--ck-primary-hover));
+    --color-primary-foreground: rgb(var(--ck-primary-foreground));
+    --color-primary-subtle: rgb(var(--ck-primary-subtle));
+    --color-primary-border: rgb(var(--ck-primary-border));
+    --color-primary-strong: rgb(var(--ck-primary-strong));
+    --color-secondary: rgb(var(--ck-secondary));
+    --color-secondary-hover: rgb(var(--ck-secondary-hover));
+    --color-secondary-foreground: rgb(var(--ck-secondary-foreground));
+    --color-destructive: rgb(var(--ck-destructive));
+    --color-destructive-hover: rgb(var(--ck-destructive-hover));
+    --color-destructive-foreground: rgb(var(--ck-destructive-foreground));
+    --color-destructive-subtle: rgb(var(--ck-destructive-subtle));
+    --color-destructive-border: rgb(var(--ck-destructive-border));
+    --color-destructive-strong: rgb(var(--ck-destructive-strong));
+    --color-success: rgb(var(--ck-success));
+    --color-success-hover: rgb(var(--ck-success-hover));
+    --color-success-foreground: rgb(var(--ck-success-foreground));
+    --color-success-subtle: rgb(var(--ck-success-subtle));
+    --color-success-border: rgb(var(--ck-success-border));
+    --color-success-strong: rgb(var(--ck-success-strong));
+    --color-warning: rgb(var(--ck-warning));
+    --color-warning-foreground: rgb(var(--ck-warning-foreground));
+    --color-warning-subtle: rgb(var(--ck-warning-subtle));
+    --color-warning-border: rgb(var(--ck-warning-border));
+    --color-warning-strong: rgb(var(--ck-warning-strong));
+    --color-info: rgb(var(--ck-info));
+    --color-info-foreground: rgb(var(--ck-info-foreground));
+    --color-info-subtle: rgb(var(--ck-info-subtle));
+    --color-info-border: rgb(var(--ck-info-border));
+    --color-info-strong: rgb(var(--ck-info-strong));
+    --color-overlay: rgb(var(--ck-overlay) / var(--ck-overlay-opacity));
+    --radius-10: 10px;
+    --radius-20: 20px;
+    --shadow-x-small: 0px 1px 2px 0px rgba(10, 13, 20, 0.03);
+    --shadow-regular: 0px 2px 4px 0px rgba(27, 28, 29, 0.04);
+    --shadow-medium: 0px 16px 32px -12px rgba(14, 18, 27, 0.10);
+    --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+    --animate-accordion-down: accordion-down 0.2s ease-out;
+    --animate-accordion-up: accordion-up 0.2s ease-out;
+    --animate-progress-indeterminate: progress-indeterminate 1.4s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@keyframes accordion-down {
+    from {
+        height: 0;
+    }
+    to {
+        height: var(--radix-accordion-content-height);
+    }
+}
+@keyframes accordion-up {
+    from {
+        height: var(--radix-accordion-content-height);
+    }
+    to {
+        height: 0;
+    }
+}
+@keyframes progress-indeterminate {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(250%);
+    }
+}
+
+@layer base {
+    /* `.light` and `.dark` also work below <html>: a ThemeScope boundary redefines the tokens for its subtree. */
+    .light,
+    :root {
+        color-scheme: light;
+        --ck-background: 255 255 255;
+        --ck-foreground: 10 10 10;
+        --ck-surface: 255 255 255;
+        --ck-surface-foreground: 10 10 10;
+        --ck-muted: 245 245 245;
+        --ck-muted-foreground: 107 107 107;
+        --ck-accent: 245 245 245;
+        --ck-accent-foreground: 10 10 10;
+        --ck-border: 229 229 229;
+        --ck-input: 229 229 229;
+        --ck-ring: 115 115 115;
+        --ck-primary: 37 99 235;
+        --ck-primary-hover: 29 78 216;
+        --ck-primary-foreground: 255 255 255;
+        --ck-primary-subtle: 239 246 255;
+        --ck-primary-border: 191 219 254;
+        --ck-primary-strong: 37 99 235;
+        --ck-secondary: 23 23 23;
+        --ck-secondary-hover: 38 38 38;
+        --ck-secondary-foreground: 255 255 255;
+        --ck-destructive: 220 38 38;
+        --ck-destructive-hover: 185 28 28;
+        --ck-destructive-foreground: 255 255 255;
+        --ck-destructive-subtle: 254 242 242;
+        --ck-destructive-border: 254 202 202;
+        --ck-destructive-strong: 185 28 28;
+        --ck-success: 21 128 61;
+        --ck-success-hover: 22 101 52;
+        --ck-success-foreground: 255 255 255;
+        --ck-success-subtle: 240 253 244;
+        --ck-success-border: 187 247 208;
+        --ck-success-strong: 21 128 61;
+        --ck-warning: 234 179 8;
+        --ck-warning-foreground: 10 10 10;
+        --ck-warning-subtle: 254 252 232;
+        --ck-warning-border: 254 240 138;
+        --ck-warning-strong: 161 98 7;
+        --ck-info: 37 99 235;
+        --ck-info-foreground: 255 255 255;
+        --ck-info-subtle: 239 246 255;
+        --ck-info-border: 191 219 254;
+        --ck-info-strong: 29 78 216;
+        --ck-overlay: 163 163 163;
+        --ck-overlay-opacity: 0.5;
+    }
+
+    .dark {
+        color-scheme: dark;
+        --ck-background: 10 10 10;
+        --ck-foreground: 250 250 250;
+        --ck-surface: 23 23 23;
+        --ck-surface-foreground: 250 250 250;
+        --ck-muted: 23 23 23;
+        --ck-muted-foreground: 163 163 163;
+        --ck-accent: 38 38 38;
+        --ck-accent-foreground: 250 250 250;
+        --ck-border: 64 64 64;
+        --ck-input: 64 64 64;
+        --ck-ring: 163 163 163;
+        --ck-primary: 37 99 235;
+        --ck-primary-hover: 29 78 216;
+        --ck-primary-foreground: 255 255 255;
+        --ck-primary-subtle: 23 37 84;
+        --ck-primary-border: 29 78 216;
+        --ck-primary-strong: 96 165 250;
+        --ck-secondary: 23 23 23;
+        --ck-secondary-hover: 38 38 38;
+        --ck-secondary-foreground: 250 250 250;
+        --ck-destructive: 220 38 38;
+        --ck-destructive-hover: 185 28 28;
+        --ck-destructive-foreground: 255 255 255;
+        --ck-destructive-subtle: 69 10 10;
+        --ck-destructive-border: 185 28 28;
+        --ck-destructive-strong: 248 113 113;
+        --ck-success: 21 128 61;
+        --ck-success-hover: 22 101 52;
+        --ck-success-foreground: 255 255 255;
+        --ck-success-subtle: 5 46 22;
+        --ck-success-border: 21 128 61;
+        --ck-success-strong: 74 222 128;
+        --ck-warning: 234 179 8;
+        --ck-warning-foreground: 10 10 10;
+        --ck-warning-subtle: 66 32 6;
+        --ck-warning-border: 161 98 7;
+        --ck-warning-strong: 250 204 21;
+        --ck-info: 37 99 235;
+        --ck-info-foreground: 255 255 255;
+        --ck-info-subtle: 23 37 84;
+        --ck-info-border: 29 78 216;
+        --ck-info-strong: 96 165 250;
+        --ck-overlay: 38 38 38;
+        --ck-overlay-opacity: 0.8;
+    }
+}
+
+@utility focus-ring {
+    @apply focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+}
+
+@utility focus-ring-inset {
+    @apply focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring;
+}
+
+@utility field-focus {
+    @apply outline outline-0 outline-offset-2 focus:outline-2;
+}
+
+@utility field-focus-within {
+    @apply outline outline-0 outline-offset-2 has-[input:focus]:outline-2;
+}
+
+@utility size-h1 {
+    font-size: 56px;
+    line-height: 64px;
+    letter-spacing: -0.01em;
+    font-weight: 600;
+}
+
+@utility size-h2 {
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -0.01em;
+    font-weight: 500;
+}
+
+@utility size-h3 {
+    font-size: 40px;
+    line-height: 48px;
+    letter-spacing: -0.01em;
+    font-weight: 500;
+}
+
+@utility size-h4 {
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: -0.005em;
+    font-weight: 500;
+}
+
+@utility size-h5 {
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: 0;
+    font-weight: 500;
+}
+
+@utility size-h6 {
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: -0.005em;
+    font-weight: 500;
+}
+
+@utility size-p-xl {
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: -0.015em;
+    font-weight: 400;
+}
+
+@utility size-p-lg {
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    font-weight: 400;
+}
+
+@utility size-p-md {
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.011em;
+    font-weight: 400;
+}
+
+@utility size-p-sm {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.006em;
+    font-weight: 400;
+}
+
+@utility size-p-xs {
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0;
+    font-weight: 400;
+}
+
+@utility size-label-xl {
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: -0.015em;
+    font-weight: 500;
+}
+
+@utility size-label-lg {
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    font-weight: 500;
+}
+
+@utility size-label-md {
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.011em;
+    font-weight: 500;
+}
+
+@utility size-label-sm {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.006em;
+    font-weight: 500;
+}
+
+@utility size-label-xs {
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0;
+    font-weight: 500;
+}
+
+@utility size-subheading-xl {
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+}
+
+@utility size-subheading-lg {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+}
+
+@utility size-subheading-md {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+}
+
+@utility size-subheading-sm {
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.04em;
+    font-weight: 500;
+}
+
+@utility size-subheading-xs {
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.04em;
+    font-weight: 500;
+}
+
+@utility size-subheading-2xs {
+    font-size: 11px;
+    line-height: 12px;
+    letter-spacing: 0.02em;
+    font-weight: 500;
+}
+
+@utility size-docs-label {
+    font-size: 18px;
+    line-height: 32px;
+    letter-spacing: -0.015em;
+    font-weight: 500;
+}
+
+@utility size-docs-p {
+    font-size: 18px;
+    line-height: 32px;
+    letter-spacing: -0.015em;
+    font-weight: 400;
+}
+
+@utility z-sticky {
+    z-index: 40;
+}
+
+@utility z-drawer {
+    z-index: 50;
+}
+
+@utility z-modal {
+    z-index: 50;
+}
+
+@utility z-command {
+    z-index: 50;
+}
+
+@utility z-dropdown {
+    z-index: 60;
+}
+
+@utility z-popover {
+    z-index: 60;
+}
+
+@utility z-tooltip {
+    z-index: 70;
+}
+
+@utility z-toast {
+    z-index: 80;
+}
+
+@utility duration-fast {
+    --tw-duration: 150ms;
+    transition-duration: 150ms;
+}
+
+@utility duration-base {
+    --tw-duration: 200ms;
+    transition-duration: 200ms;
+}
+
+@utility duration-slow {
+    --tw-duration: 300ms;
+    transition-duration: 300ms;
+}
+
+/* ck-ui:end */

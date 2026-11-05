@@ -1,0 +1,164 @@
+/* ck-ui:start - CK-UI design system, managed by ck-ui-cli (`npx ck-ui-cli init` rewrites this block) */
+/* CK-UI design tokens. Values are RGB channels so Tailwind opacity modifiers work (e.g. bg-primary/10). */
+@layer base {
+    /* `.light` and `.dark` also work below <html>: a ThemeScope boundary redefines the tokens for its subtree. */
+    .light,
+    :root {
+        color-scheme: light;
+        --ck-background: 255 255 255;
+        --ck-foreground: 10 10 10;
+        --ck-surface: 255 255 255;
+        --ck-surface-foreground: 10 10 10;
+        --ck-muted: 245 245 245;
+        /* Slightly darker than neutral-500 so muted text meets WCAG AA (4.5:1) on both background and muted. */
+        --ck-muted-foreground: 107 107 107;
+        /* Highlight for hovered/selected items inside surfaces (menus, listboxes, palettes). */
+        --ck-accent: 245 245 245;
+        --ck-accent-foreground: 10 10 10;
+        --ck-border: 229 229 229;
+        --ck-input: 229 229 229;
+        /* Keyboard focus ring: neutral, like CK-UI's original focus halos (not the brand blue). neutral-500 keeps
+           at least 3:1 against the background, muted and subtle surfaces (WCAG 1.4.11). */
+        --ck-ring: 115 115 115;
+
+        /* blue-600: white text on it is 5.17:1 (blue-500 was 3.68:1). */
+        --ck-primary: 37 99 235;
+        --ck-primary-hover: 29 78 216;
+        --ck-primary-foreground: 255 255 255;
+        --ck-primary-subtle: 239 246 255;
+        --ck-primary-border: 191 219 254;
+        --ck-primary-strong: 37 99 235;
+
+        --ck-secondary: 23 23 23;
+        --ck-secondary-hover: 38 38 38;
+        --ck-secondary-foreground: 255 255 255;
+
+        --ck-destructive: 220 38 38;
+        --ck-destructive-hover: 185 28 28;
+        --ck-destructive-foreground: 255 255 255;
+        --ck-destructive-subtle: 254 242 242;
+        --ck-destructive-border: 254 202 202;
+        --ck-destructive-strong: 185 28 28;
+
+        /* green-700: white text on it is 5.02:1 (green-500 was 2.28:1). */
+        --ck-success: 21 128 61;
+        --ck-success-hover: 22 101 52;
+        --ck-success-foreground: 255 255 255;
+        --ck-success-subtle: 240 253 244;
+        --ck-success-border: 187 247 208;
+        --ck-success-strong: 21 128 61;
+
+        --ck-warning: 234 179 8;
+        --ck-warning-foreground: 10 10 10;
+        --ck-warning-subtle: 254 252 232;
+        --ck-warning-border: 254 240 138;
+        --ck-warning-strong: 161 98 7;
+
+        --ck-info: 37 99 235;
+        --ck-info-foreground: 255 255 255;
+        --ck-info-subtle: 239 246 255;
+        --ck-info-border: 191 219 254;
+        --ck-info-strong: 29 78 216;
+
+        /* Backdrop behind modal layers (Modal, AlertDialog, Drawer, CommandPalette). */
+        --ck-overlay: 163 163 163;
+        --ck-overlay-opacity: 0.5;
+    }
+
+    .dark {
+        color-scheme: dark;
+        --ck-background: 10 10 10;
+        --ck-foreground: 250 250 250;
+        --ck-surface: 23 23 23;
+        --ck-surface-foreground: 250 250 250;
+        --ck-muted: 23 23 23;
+        --ck-muted-foreground: 163 163 163;
+        --ck-accent: 38 38 38;
+        --ck-accent-foreground: 250 250 250;
+        --ck-border: 64 64 64;
+        --ck-input: 64 64 64;
+        --ck-ring: 163 163 163;
+
+        --ck-primary: 37 99 235;
+        --ck-primary-hover: 29 78 216;
+        --ck-primary-foreground: 255 255 255;
+        --ck-primary-subtle: 23 37 84;
+        --ck-primary-border: 29 78 216;
+        --ck-primary-strong: 96 165 250;
+
+        --ck-secondary: 23 23 23;
+        --ck-secondary-hover: 38 38 38;
+        --ck-secondary-foreground: 250 250 250;
+
+        --ck-destructive: 220 38 38;
+        --ck-destructive-hover: 185 28 28;
+        --ck-destructive-foreground: 255 255 255;
+        --ck-destructive-subtle: 69 10 10;
+        --ck-destructive-border: 185 28 28;
+        --ck-destructive-strong: 248 113 113;
+
+        --ck-success: 21 128 61;
+        --ck-success-hover: 22 101 52;
+        --ck-success-foreground: 255 255 255;
+        --ck-success-subtle: 5 46 22;
+        --ck-success-border: 21 128 61;
+        --ck-success-strong: 74 222 128;
+
+        --ck-warning: 234 179 8;
+        --ck-warning-foreground: 10 10 10;
+        --ck-warning-subtle: 66 32 6;
+        --ck-warning-border: 161 98 7;
+        --ck-warning-strong: 250 204 21;
+
+        --ck-info: 37 99 235;
+        --ck-info-foreground: 255 255 255;
+        --ck-info-subtle: 23 37 84;
+        --ck-info-border: 29 78 216;
+        --ck-info-strong: 96 165 250;
+
+        --ck-overlay: 38 38 38;
+        --ck-overlay-opacity: 0.8;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+    }
+
+    /* Reduced motion: keep state changes, drop movement. */
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
+        }
+    }
+}
+
+/* CK-UI focus styles: keyboard focus rings for controls, and the field focus halo for inputs. */
+@layer utilities {
+    .focus-ring {
+        @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+    }
+
+    /* For controls inside clipped containers (tabs, menus, list items). */
+    .focus-ring-inset {
+        @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring;
+    }
+
+    /*
+     * Field focus (Input, Textarea, Select, Combobox, DatePicker, OTP slots): the component turns its border strong
+     * on focus and sets the halo colour; these add the soft 2px halo 2px outside the border.
+     */
+    .field-focus {
+        @apply outline outline-0 outline-offset-2 focus:outline-2;
+    }
+
+    /* The same treatment on a composite field's root (Input.Root) while its input has focus. */
+    .field-focus-within {
+        @apply outline outline-0 outline-offset-2 has-[input:focus]:outline-2;
+    }
+}
+/* ck-ui:end */

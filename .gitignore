@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Build output
+.next/
+out/
+dist/
+build/
+*.tsbuildinfo
+next-env.d.ts
+
+# Environment files: never commit them
+.env
+.env.*
+
+# Logs and editor or OS files
+*.log
+npm-debug.log*
+.DS_Store
+.vscode/
+.idea/
+
+# Deployment and tool state
+.vercel/
+*.ck-ui-backup

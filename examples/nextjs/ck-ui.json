@@ -1,0 +1,66 @@
+{
+  "registry": "https://www.ck-ui.com/r",
+  "framework": "next",
+  "tailwind": 4,
+  "componentsDir": "components/ck-ui",
+  "css": "app/globals.css",
+  "tailwindConfig": null,
+  "installed": {
+    "app/globals.css#ck-ui": {
+      "item": "setup",
+      "sha256": "c548e0242a2aeffbaf1f83e67d3be98a550be23ed99ae3895f873135562973f6"
+    },
+    "components/ck-ui/Badge.tsx": {
+      "item": "badge",
+      "sha256": "0e5d03d8c2b0548ae1a4671600553ceedd4c59f33bbeab42b45db564ad010305"
+    },
+    "components/ck-ui/Button.tsx": {
+      "item": "button",
+      "sha256": "20bfab3cec161224f47457c0b73f843eca767c1ac9fd900c34f0136e33abaf6d"
+    },
+    "components/ck-ui/Checkbox.tsx": {
+      "item": "checkbox",
+      "sha256": "a922b2534f19b3c92166a60524eaaf5ac9b846ca4b88785c4d335e29f95ba31e"
+    },
+    "components/ck-ui/Field.tsx": {
+      "item": "field",
+      "sha256": "765724ef30d80ec7811824e11f1d8479aeece4e629dca167f7c2a9ea96b70a33"
+    },
+    "components/ck-ui/Input.tsx": {
+      "item": "input",
+      "sha256": "76045cc11e1121c12b0f2239057a6125d7d34a4c04ddcb68676cde5beaa046e3"
+    },
+    "components/ck-ui/Label.tsx": {
+      "item": "label",
+      "sha256": "51a5d55de324351005410b94672a6b5435c188f1109d93affa3cb1a6ddf72895"
+    },
+    "components/ck-ui/lib/utils.ts": {
+      "item": "setup",
+      "sha256": "15db14074fd96f3fc48e73fad43290434ad212865439fb8240862c8f8e92b1b5"
+    },
+    "components/ck-ui/Modal.tsx": {
+      "item": "modal",
+      "sha256": "a434bf9a7ef4f8978c4c0e9360890d3431c16cfef9a9022b5caf56c6878e4b74"
+    },
+    "components/ck-ui/Select.tsx": {
+      "item": "select",
+      "sha256": "e4ab650c641808ad4affe441873b9ac536bcf032b1491809db4df5786e661c7d"
+    },
+    "components/ck-ui/Switch.tsx": {
+      "item": "switch",
+      "sha256": "ee29743c7172b890eada271742ba072746620ee3f26af8067d9f8611dc3ececb"
+    },
+    "components/ck-ui/ThemeScope.tsx": {
+      "item": "theme-scope",
+      "sha256": "6fabb74de2061b17adf91ca4171cb4cc46fd5b809153091bedae12b0e5af99af"
+    },
+    "components/ck-ui/Toast.tsx": {
+      "item": "toast",
+      "sha256": "d904ba0c6afd44bb3a2e5d029b020d53d293cd89d9a32fee24236e79536f88e8"
+    },
+    "components/ck-ui/Tooltip.tsx": {
+      "item": "tooltip",
+      "sha256": "23fb1539caafe4ef1ea8cecec1ba091607415424bd774c01ef1f51071466a405"
+    }
+  }
+}
